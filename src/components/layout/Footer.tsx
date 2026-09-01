@@ -1,7 +1,5 @@
-import React from 'react';
 import Link from "next/link";
 import { ArrowUpRight, Mail } from "lucide-react";
-import { cn } from '@/lib/cn';
 import NewsletterForm from "./NewsletterForm";
 function IconLinkedin() {
   return (
