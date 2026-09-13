@@ -290,3 +290,4 @@ Copy `.env.example` to `.env.local` and fill in values. Never commit `.env.local
 - **Server vs Client components**: Components with `useState`, event handlers, or browser APIs need `"use client"` at the top. Icons passed from Server → Client must be pre-rendered JSX (`<Icon size={20} />`), not component references.
 - **Dark mode**: Toggled by adding/removing the `dark` class on `<html>`. Persisted in `localStorage`. An inline `<script>` in `layout.tsx` prevents flash on reload.
 - **Path alias**: `@/` maps to `src/`. Always use `@/` imports, not relative paths like `../../`.
+
