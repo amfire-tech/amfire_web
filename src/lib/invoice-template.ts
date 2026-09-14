@@ -34,8 +34,8 @@ const esc = (s: string) =>
 
 /**
  * Invoice number derived from the payment row — there is no dedicated column,
- * and the cuid suffix is already unique and stable.
- * ponytail: derived number, add an invoice_no sequence if accounting needs one.
+ * and the cuid suffix is already unique and stable. Swap in a real invoice_no
+ * sequence if accounting ever needs consecutive numbering.
  */
 export const invoiceNo = (p: { id: string; createdAt: Date }) =>
   `AMF-${p.createdAt.getFullYear()}-${p.id.slice(-6).toUpperCase()}`;
