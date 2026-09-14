@@ -114,13 +114,14 @@ export default function AdminProjectDetailPage() {
     } else flash("error", "Failed to add milestone");
   }
 
-  // Update milestone status
-  async function updateMilestoneStatus(milestoneId: string, status: string) {
-    await authFetch(`/api/admin/projects/${id}/milestones`, {
+  // Update a milestone — status, or either of its dates
+  async function updateMilestone(milestoneId: string, fields: Record<string, string>) {
+    const res = await authFetch(`/api/admin/projects/${id}/milestones`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ milestoneId, status }),
+      body: JSON.stringify({ milestoneId, ...fields }),
     });
+    if (!res.ok) flash("error", "Failed to update milestone");
     refetch();
   }
 
@@ -322,10 +323,24 @@ export default function AdminProjectDetailPage() {
                     <b style={{ fontWeight: 700 }}>{m.title}</b>
                     {m.description ? <div style={{ fontSize: "11.5px", color: "var(--fg-muted)" }}>{m.description}</div> : null}
                   </td>
-                  <td>{day(m.dueDate)}</td>
-                  <td>{day(m.completedAt)}</td>
                   <td>
-                    <select className="cell-select" value={m.status} onChange={(e) => updateMilestoneStatus(m.id, e.target.value)}>
+                    <input
+                      type="date"
+                      className="cell-select"
+                      value={m.dueDate?.slice(0, 10) ?? ""}
+                      onChange={(e) => updateMilestone(m.id, { dueDate: e.target.value })}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="date"
+                      className="cell-select"
+                      value={m.completedAt?.slice(0, 10) ?? ""}
+                      onChange={(e) => updateMilestone(m.id, { completedAt: e.target.value })}
+                    />
+                  </td>
+                  <td>
+                    <select className="cell-select" value={m.status} onChange={(e) => updateMilestone(m.id, { status: e.target.value })}>
                       {MS_STATUS.map((s) => <option key={s} value={s}>{s.replace("_", " ")}</option>)}
                     </select>
                   </td>

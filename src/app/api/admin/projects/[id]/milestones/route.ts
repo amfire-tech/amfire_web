@@ -77,9 +77,11 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   }
 
   const data: Record<string, unknown> = { ...parsed.data };
-  if (data.dueDate) data.dueDate = new Date(data.dueDate as string);
-  if (data.completedAt) data.completedAt = new Date(data.completedAt as string);
-  if (data.status === "COMPLETED" && !data.completedAt) {
+  // An empty string is the date input's "cleared" value, so it clears the column.
+  if ("dueDate" in data) data.dueDate = data.dueDate ? new Date(data.dueDate as string) : null;
+  if ("completedAt" in data) data.completedAt = data.completedAt ? new Date(data.completedAt as string) : null;
+  // Only stamp the completion date when the caller didn't say anything about it.
+  if (data.status === "COMPLETED" && !("completedAt" in data)) {
     data.completedAt = new Date();
   }
 
