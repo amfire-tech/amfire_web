@@ -221,39 +221,39 @@ export function HomePageView({ t }: { t: T }) {
     <div className="head-l"><span className="label">{t('home.our-process')}</span><h2 className="h-md">{t('home.7-steps-always-on-time')}</h2><p>{t('home.from-idea-to-impact-a-proven')}</p></div>
     <div className="prow-fit"><div className="prow">
     <div className="pcol" style={{width:'150px'}}>
-    <div className="icon-slot"><img src={t('home.img-search')} style={{height:'190px'}} /></div>
+    <div className="icon-slot"><img alt="" loading="lazy" decoding="async" src={t('home.img-search')} style={{height:'190px'}} /></div>
     <span className="pnum">{t('home.01-2')}</span><h4>{t('home.discovery-2')}</h4><p>{t('home.understand-your-goals-and-uncover-opportunities')}</p><span className="dur">{t('home.3-5-days')}</span>
     </div>
-    <div className="pbead lead-in"><img src={t('home.img-connector')} /></div>
+    <div className="pbead lead-in"><img alt="" loading="lazy" decoding="async" src={t('home.img-connector')} /></div>
     <div className="circuit">
     <div className="pcol" style={{width:'130px'}}>
-    <div className="icon-slot"><img src={t('home.img-cubes')} /></div>
+    <div className="icon-slot"><img alt="" loading="lazy" decoding="async" src={t('home.img-cubes')} /></div>
     <span className="pnum">{t('home.02-2')}</span><h4>{t('home.architecture')}</h4><p>{t('home.design-a-robust-scalable-blueprint')}</p><span className="dur">{t('home.2-3-days')}</span>
     </div>
-    <div className="pbead"><img src={t('home.img-connector-2')} /></div>
+    <div className="pbead"><img alt="" loading="lazy" decoding="async" src={t('home.img-connector-2')} /></div>
     <div className="pcol" style={{width:'125px'}}>
-    <div className="icon-slot"><img src={t('home.img-browser')} /></div>
+    <div className="icon-slot"><img alt="" loading="lazy" decoding="async" src={t('home.img-browser')} /></div>
     <span className="pnum">{t('home.03-2')}</span><h4>{t('home.ui-ux')}</h4><p>{t('home.craft-intuitive-experiences-users-love')}</p><span className="dur">{t('home.4-6-days')}</span>
     </div>
-    <div className="pbead"><img src={t('home.img-connector-3')} /></div>
+    <div className="pbead"><img alt="" loading="lazy" decoding="async" src={t('home.img-connector-3')} /></div>
     <div className="pcol" style={{width:'130px'}}>
-    <div className="icon-slot"><img src={t('home.img-frontend')} /></div>
+    <div className="icon-slot"><img alt="" loading="lazy" decoding="async" src={t('home.img-frontend')} /></div>
     <span className="pnum">{t('home.04-2')}</span><h4>{t('home.frontend')}</h4><p>{t('home.build-fast-responsive-modern-interfaces')}</p><span className="dur">{t('home.5-7-days')}</span>
     </div>
-    <div className="pbead"><img src={t('home.img-connector-4')} /></div>
+    <div className="pbead"><img alt="" loading="lazy" decoding="async" src={t('home.img-connector-4')} /></div>
     <div className="pcol" style={{width:'135px'}}>
-    <div className="icon-slot"><img src={t('home.img-servers')} /></div>
+    <div className="icon-slot"><img alt="" loading="lazy" decoding="async" src={t('home.img-servers')} /></div>
     <span className="pnum">{t('home.05-2')}</span><h4>{t('home.backend')}</h4><p>{t('home.power-the-product-with-secure-apis')}</p><span className="dur">{t('home.4-6-days-2')}</span>
     </div>
-    <div className="pbead"><img src={t('home.img-connector-5')} /></div>
+    <div className="pbead"><img alt="" loading="lazy" decoding="async" src={t('home.img-connector-5')} /></div>
     <div className="pcol" style={{width:'135px'}}>
-    <div className="icon-slot"><img src={t('home.img-brain')} /></div>
+    <div className="icon-slot"><img alt="" loading="lazy" decoding="async" src={t('home.img-brain')} /></div>
     <span className="pnum">{t('home.06-2')}</span><h4>{t('home.ai-integration-2')}</h4><p>{t('home.integrate-intelligent-capabilities')}</p><span className="dur">{t('home.3-5-days-2')}</span>
     </div>
     </div>
-    <div className="pbead exit"><img src={t('home.img-connector-6')} /></div>
+    <div className="pbead exit"><img alt="" loading="lazy" decoding="async" src={t('home.img-connector-6')} /></div>
     <div className="pcol" style={{width:'125px'}}>
-    <div className="icon-slot"><img src={t('home.img-rocket')} style={{height:'185px'}} /></div>
+    <div className="icon-slot"><img alt="" loading="lazy" decoding="async" src={t('home.img-rocket')} style={{height:'185px'}} /></div>
     <span className="pnum">{t('home.07')}</span><h4>{t('home.deploy-2')}</h4><p>{t('home.launch-smoothly-with-continuous-delivery')}</p><span className="dur">{t('home.1-2-days')}</span>
     </div>
     </div></div>
