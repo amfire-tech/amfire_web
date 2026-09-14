@@ -2,6 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { authFetch } from "@/stores/auth-store";
+import { openInvoice } from "@/lib/open-invoice";
 import { Skeleton } from "@/components/ui/Skeleton";
 
 interface Payment {
@@ -108,11 +109,13 @@ export default function ClientPaymentsPage() {
                 <div className="amt">{money(Number(p.amount ?? 0))}</div>
                 <div className="f">
                   <span>{p.status === "PAID" ? `Paid ${day(p.paidDate)}` : `Due ${day(p.dueDate)}`}</span>
-                  {p.invoiceUrl ? (
-                    <a href={p.invoiceUrl} target="_blank" rel="noreferrer" style={{ color: "var(--color-orange)", fontWeight: 600, fontSize: "12.5px" }}>
-                      Download →
-                    </a>
-                  ) : null}
+                  <button
+                    type="button"
+                    onClick={() => openInvoice(p.id)}
+                    style={{ background: "none", border: "none", padding: 0, cursor: "pointer", color: "var(--color-orange)", fontWeight: 600, fontSize: "12.5px" }}
+                  >
+                    Download invoice →
+                  </button>
                 </div>
               </div>
             );
