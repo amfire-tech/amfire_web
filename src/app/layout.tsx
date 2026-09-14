@@ -39,7 +39,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <head></head>
+      <head>
+        {/* The Latin subset is the only one English copy ever pulls, and the
+            browser would otherwise discover it only after parsing the CSS. */}
+        <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <ThemeInitializer />
         {children}
