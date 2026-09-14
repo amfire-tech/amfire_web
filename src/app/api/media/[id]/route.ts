@@ -32,7 +32,11 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
       "Content-Length": String(body.byteLength),
       "X-Content-Type-Options": "nosniff",
       "Content-Disposition": `inline; filename="${media.filename.replace(/"/g, "")}"`,
-      "Cache-Control": "public, max-age=31536000, immutable",
+      // s-maxage is what actually gets this cached on a CDN (Vercel's edge
+      // ignores max-age alone for function responses), so a popular image is
+      // one database read per region per year instead of one per visitor.
+      // Safe to pin: a row is never rewritten — replacing an image mints a new id.
+      "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable",
     },
   });
 }

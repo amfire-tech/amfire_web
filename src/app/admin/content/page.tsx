@@ -75,7 +75,7 @@ function ImageUpload({ value, onChange }: { value: string; onChange: (url: strin
           <button type="button" className="cfield-clear" onClick={() => onChange("")}>Remove</button>
         ) : null}
         <span className="cfield-hint">
-          {error ? error : "PNG, JPEG, WebP, GIF or AVIF · up to 5 MB · Save to publish"}
+          {error ? error : "PNG, JPEG, WebP, GIF or AVIF · up to 4 MB · Save to publish"}
         </span>
       </div>
       {value ? (
