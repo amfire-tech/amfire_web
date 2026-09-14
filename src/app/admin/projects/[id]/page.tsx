@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { authFetch } from "@/stores/auth-store";
+import { openInvoice } from "@/lib/open-invoice";
 import { Skeleton } from "@/components/ui/Skeleton";
 
 const money = (v: string | number | null) => (v ? "₹" + Number(v).toLocaleString("en-IN") : "—");
@@ -376,7 +377,17 @@ export default function AdminProjectDetailPage() {
                       {PAY_STATUS.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </td>
-                  <td style={{ textAlign: "right" }}>
+                  <td style={{ textAlign: "right", whiteSpace: "nowrap" }}>
+                    <button
+                      className="btn-ghost"
+                      type="button"
+                      style={{ marginRight: 8 }}
+                      onClick={async () => {
+                        if (!(await openInvoice(p.id))) flash("error", "Could not open the invoice");
+                      }}
+                    >
+                      Invoice
+                    </button>
                     <button className="btn-danger" type="button" onClick={() => deletePayment(p.id, p.label)}>Delete</button>
                   </td>
                 </tr>
