@@ -5,8 +5,14 @@ import { sniffImageMime, readImageSize, IMAGE_EXTENSIONS } from "@/lib/image-typ
 
 const ADMIN_ROLES = ["SUPER_ADMIN", "ADMIN"];
 
-/** Postgres BYTEA is fine at this size; anything larger belongs in object storage. */
-const MAX_BYTES = 5 * 1024 * 1024;
+/**
+ * Vercel Functions reject any request body over 4.5 MB at the platform edge
+ * with an opaque FUNCTION_PAYLOAD_TOO_LARGE, before this handler runs — so the
+ * app's own cap sits below that, leaving room for multipart framing, and the
+ * admin gets a readable error instead. Postgres BYTEA is comfortable at this
+ * size; anything larger belongs in object storage.
+ */
+const MAX_BYTES = 4 * 1024 * 1024;
 
 /** GET — list the media library (metadata only; bytes are served by /api/media/[id]). */
 export async function GET(req: NextRequest) {
@@ -45,7 +51,7 @@ export async function POST(req: NextRequest) {
   }
   if (file.size > MAX_BYTES) {
     return NextResponse.json(
-      { error: `Image is ${(file.size / 1024 / 1024).toFixed(1)} MB — the limit is 5 MB.` },
+      { error: `Image is ${(file.size / 1024 / 1024).toFixed(1)} MB — the limit is 4 MB.` },
       { status: 413 }
     );
   }
